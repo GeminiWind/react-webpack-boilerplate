@@ -31,17 +31,26 @@ module.exports = {
                     }]
             },
             {
-                test: /\.(png|jpg|gif|jpeg)$/,
+                test: /\.(png|jpg|gif|jpeg|svg)$/,
                 loader: 'file-loader?name=images/[name].[ext]'
             },
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url-loader?limit=10000',
             }
         ]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        alias: {
+            '@assets': path.resolve(__dirname, './src/assets'),
+            '@css': path.resolve(__dirname, './src/assets/css'),
+            '@images': path.resolve(__dirname, './src/assets/images'),
+            '@components': path.resolve(__dirname, './src/components'),
+            '@containers': path.resolve(__dirname, './src/containers'),
+            '@plugins': path.resolve(__dirname, './src/plugins'),
+            '@static': path.resolve(__dirname, './src/static')
+        }
     },
     devServer: {
         historyApiFallback: true,
